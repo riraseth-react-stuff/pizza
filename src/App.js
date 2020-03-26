@@ -2,6 +2,7 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import Navbar from './Navbar/Navbar';
 import { Banner } from './Banner/Banner';
+import Menu from './Menu/Menu';
 const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
@@ -21,8 +22,7 @@ function App() {
       <GlobalStyle></GlobalStyle>
       <Navbar></Navbar>
       <Banner></Banner>
-      <h1>Slice Line</h1>
-      <div className="">hello pizza</div>
+      <Menu></Menu>
     </React.Fragment>
   );
 }
