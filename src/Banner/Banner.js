@@ -5,4 +5,5 @@ export const Banner = styled.div`
   background-image: url('img/banner.jpg');
   background-size: cover;
   background-position: center;
+  filter: contrast(75%);
 `;
