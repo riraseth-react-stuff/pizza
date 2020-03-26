@@ -1,8 +1,10 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-
+import Navbar from './Navbar/Navbar';
 const GlobalStyle = createGlobalStyle`
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -16,6 +18,7 @@ function App() {
   return (
     <React.Fragment>
       <GlobalStyle></GlobalStyle>
+      <Navbar></Navbar>
       <h1>Slice Line</h1>
       <div className="">hello pizza</div>
     </React.Fragment>
