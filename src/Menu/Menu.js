@@ -11,16 +11,23 @@ const StyledMenu = styled.div`
 const Menu = () => {
   return (
     <StyledMenu>
-      <h1>Menu</h1>
-      <FoodGrid>
-        {foods.map(food => {
-          return (
-            <Food img={food.img}>
-              <FoodLabel>{food.name}</FoodLabel>
-            </Food>
-          );
-        })}
-      </FoodGrid>
+      {/* Object.entries creates array of arrays with key value pairs
+          eg. [['pizza', 'cheese'], ['pizza','pepperoni']]    
+      */}
+      {Object.entries(foods).map(([sectionName, foods], index) => (
+        <React.Fragment key={index}>
+          <h1>{sectionName}</h1>
+          <FoodGrid>
+            {foods.map((food, index) => {
+              return (
+                <Food img={food.img} key={index}>
+                  <FoodLabel>{food.name}</FoodLabel>
+                </Food>
+              );
+            })}
+          </FoodGrid>
+        </React.Fragment>
+      ))}
     </StyledMenu>
   );
 };
