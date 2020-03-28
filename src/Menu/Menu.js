@@ -8,7 +8,7 @@ const StyledMenu = styled.div`
   margin: 0px 400px 50px 20px;
 `;
 
-const Menu = () => {
+const Menu = ({ setOpenFood }) => {
   return (
     <StyledMenu>
       {/* Object.entries creates array of arrays with key value pairs
@@ -20,7 +20,11 @@ const Menu = () => {
           <FoodGrid>
             {foods.map((food, index) => {
               return (
-                <Food img={food.img} key={index}>
+                <Food
+                  img={food.img}
+                  key={index}
+                  onClick={() => setOpenFood(food)}
+                >
                   <FoodLabel>{food.name}</FoodLabel>
                 </Food>
               );
