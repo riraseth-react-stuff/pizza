@@ -60,26 +60,36 @@ const DialogBannerName = styled(FoodLabel)`
   padding: 5px 40px;
 `;
 
-const FoodDialog = ({ openFood, setOpenFood }) => {
-  const handleClick = () => {
+const FoodDialog = ({ openFood, setOpenFood, setOrders, orders }) => {
+  const close = () => {
     setOpenFood();
   };
 
   if (!openFood) return null;
-  return openFood ? (
+
+  const order = {
+    name: openFood.name
+  };
+
+  const addToOrder = () => {
+    setOrders([...orders, order]);
+    close();
+  };
+
+  return (
     <React.Fragment>
-      <DialogShadow onClick={handleClick}></DialogShadow>
+      <DialogShadow onClick={close}></DialogShadow>
       <Dialog>
         <DialogBanner img={openFood.img}>
           <DialogBannerName>{openFood.name}</DialogBannerName>
         </DialogBanner>
         <DialogContent></DialogContent>
         <DialogFooter>
-          <ConfirmButton>Add to order</ConfirmButton>
+          <ConfirmButton onClick={addToOrder}>Add to order</ConfirmButton>
         </DialogFooter>
       </Dialog>
     </React.Fragment>
-  ) : null;
+  );
 };
 
 export default FoodDialog;

@@ -25,10 +25,14 @@ const OrderContent = styled(DialogContent)`
 
 const OrderFooter = styled.div``;
 
-const Order = () => {
+const Order = ({ orders }) => {
   return (
     <StyledOrder>
-      <OrderContent>Your order is empty</OrderContent>
+      {orders.length === 0 ? (
+        <OrderContent>Your order is empty</OrderContent>
+      ) : (
+        <OrderContent>Found: {orders.length} orders</OrderContent>
+      )}
       <DialogFooter>
         <ConfirmButton>Checkout here</ConfirmButton>
       </DialogFooter>
