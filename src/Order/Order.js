@@ -5,6 +5,7 @@ import {
   ConfirmButton,
   DialogFooter
 } from '../FoodDialog/FoodDialog';
+import { formatPrice } from '../Data/FoodData';
 const StyledOrder = styled.div`
   position: fixed;
   right: 0px;
@@ -30,6 +31,9 @@ const OrderContainer = styled.div`
 
 const OrderItem = styled.div`
   padding: 10px 0px;
+  display: grid;
+  grid-template-columns: 20px 150px 20px 60px;
+  justify-content: space-between;
 `;
 
 const Order = ({ orders }) => {
@@ -43,7 +47,12 @@ const Order = ({ orders }) => {
           {orders.map((order, index) => {
             return (
               <OrderContainer key={index}>
-                <OrderItem>{order.name}</OrderItem>
+                <OrderItem>
+                  <div>1</div>
+                  <div>{order.name}</div>
+                  <div></div>
+                  <div>{formatPrice(order.price)}</div>
+                </OrderItem>
               </OrderContainer>
             );
           })}
