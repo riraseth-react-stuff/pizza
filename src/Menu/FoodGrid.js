@@ -6,14 +6,14 @@ export const FoodGrid = styled.div`
   gap: 20px;
 `;
 
-export const FoodLabel = styled.div`
+export const FoodLabel = styled(StyledTitle)`
   position: absolute;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px;
   border-radius: 7px;
 `;
 
-export const Food = styled(StyledTitle)`
+export const Food = styled.div`
   height: 100px;
   padding: 10px;
   font-size: 20px;
