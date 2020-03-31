@@ -6,6 +6,8 @@ import {
   DialogFooter
 } from '../FoodDialog/FoodDialog';
 import { formatPrice } from '../Data/FoodData';
+import { getPrice } from '../FoodDialog/FoodDialog';
+
 const StyledOrder = styled.div`
   position: fixed;
   right: 0px;
@@ -51,7 +53,7 @@ const Order = ({ orders }) => {
                   <div>1</div>
                   <div>{order.name}</div>
                   <div></div>
-                  <div>{formatPrice(order.price)}</div>
+                  <div>{formatPrice(getPrice(order))}</div>
                 </OrderItem>
               </OrderContainer>
             );
