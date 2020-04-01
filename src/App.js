@@ -8,16 +8,19 @@ import Order from './Order/Order';
 import { useOpenFood } from './Hooks/useOpenFood';
 import { useOrders } from './Hooks/useOrders';
 import { useTitle } from './Hooks/useTitle';
+import useAuthentication from './Hooks/useAuthentication';
+
 function App() {
   const openFood = useOpenFood();
   const orders = useOrders();
+  const auth = useAuthentication();
   useTitle({ ...openFood, ...orders });
   return (
     <React.Fragment>
       <GlobalStyle></GlobalStyle>
       <FoodDialog {...openFood} {...orders}></FoodDialog>
-      <Navbar></Navbar>
-      <Order {...orders} {...openFood}></Order>
+      <Navbar {...auth}></Navbar>
+      <Order {...orders} {...openFood} {...auth}></Order>
       <Banner></Banner>
       <Menu {...openFood}></Menu>
     </React.Fragment>

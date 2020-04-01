@@ -54,7 +54,7 @@ const DetailItem = styled.div`
   font-size: 10px;
 `;
 
-const Order = ({ orders, setOrders, setOpenFood }) => {
+const Order = ({ orders, setOrders, setOpenFood, login, loggedIn }) => {
   const subtotal = orders.reduce((total, order) => {
     return total + getPrice(order);
   }, 0);
@@ -91,7 +91,9 @@ const Order = ({ orders, setOrders, setOpenFood }) => {
                       deleteItem(index);
                     }}
                   >
-                    ❌
+                    <span role="img" aria-label="close">
+                      ❌
+                    </span>
                   </div>
                   <div>{formatPrice(getPrice(order))}</div>
                 </OrderItem>
@@ -125,7 +127,18 @@ const Order = ({ orders, setOrders, setOpenFood }) => {
         </OrderContent>
       )}
       <DialogFooter>
-        <ConfirmButton>Checkout here</ConfirmButton>
+        <ConfirmButton
+          onClick={() => {
+            if (loggedIn) {
+              // setOpenOrderDialog(true);
+              // sendOrder(orders, loggedIn);
+            } else {
+              login();
+            }
+          }}
+        >
+          Checkout here
+        </ConfirmButton>
       </DialogFooter>
     </StyledOrder>
   );
