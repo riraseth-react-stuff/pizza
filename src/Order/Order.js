@@ -7,6 +7,7 @@ import {
 } from '../FoodDialog/FoodDialog';
 import { formatPrice } from '../Data/FoodData';
 import { getPrice } from '../FoodDialog/FoodDialog';
+
 const database = window.firebase.database();
 
 const StyledOrder = styled.div`
@@ -84,7 +85,14 @@ const sendOrder = (orders, { email, displayName }) => {
   });
 };
 
-const Order = ({ orders, setOrders, setOpenFood, login, loggedIn }) => {
+const Order = ({
+  orders,
+  setOrders,
+  setOpenFood,
+  login,
+  loggedIn,
+  setOpenOrderDialog
+}) => {
   const subtotal = orders.reduce((total, order) => {
     return total + getPrice(order);
   }, 0);
@@ -156,20 +164,22 @@ const Order = ({ orders, setOrders, setOpenFood, login, loggedIn }) => {
           </OrderContainer>
         </OrderContent>
       )}
-      <DialogFooter>
-        <ConfirmButton
-          onClick={() => {
-            if (loggedIn) {
-              // setOpenOrderDialog(true);
-              sendOrder(orders, loggedIn);
-            } else {
-              login();
-            }
-          }}
-        >
-          Checkout here
-        </ConfirmButton>
-      </DialogFooter>
+      {orders.length > 0 && (
+        <DialogFooter>
+          <ConfirmButton
+            onClick={() => {
+              if (loggedIn) {
+                setOpenOrderDialog(true);
+                sendOrder(orders, loggedIn);
+              } else {
+                login();
+              }
+            }}
+          >
+            Checkout here
+          </ConfirmButton>
+        </DialogFooter>
+      )}
     </StyledOrder>
   );
 };
