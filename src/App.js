@@ -17,7 +17,7 @@ function App() {
       <GlobalStyle></GlobalStyle>
       <FoodDialog {...openFood} {...orders}></FoodDialog>
       <Navbar></Navbar>
-      <Order {...orders}></Order>
+      <Order {...orders} {...openFood}></Order>
       <Banner></Banner>
       <Menu {...openFood}></Menu>
     </React.Fragment>
