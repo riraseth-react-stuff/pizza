@@ -23,7 +23,7 @@ const Toppings = ({ toppings, checkTopping }) => {
           <ToppingCheckbox
             type="checkbox"
             checked={topping.checked}
-            onClick={() => {
+            onChange={() => {
               checkTopping(i);
             }}
           />
