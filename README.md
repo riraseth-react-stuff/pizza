@@ -1,5 +1,5 @@
-## Working project hosted on Netlify 
-https://cocky-haibt-602458.netlify.app/
+## Working project hosted on Heroku
+https://pizza-riraseth.herokuapp.com/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
